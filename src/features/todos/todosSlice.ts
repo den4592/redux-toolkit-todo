@@ -13,14 +13,21 @@ interface TodoState {
 }
 
 const initialState: TodoState = {
-  todos: [],
+  todos: [{ id: "1", text: "hello", completed: false }],
 };
 
 const todoSlice = createSlice({
   name: "todo",
   initialState,
-  reducers: {},
+  reducers: {
+    addTodo(state, action) {
+      // state.todos.push(action.payload)
+      console.log(state, action);
+    },
+  },
 });
+
+export const { addTodo } = todoSlice.actions;
 
 export const selectAllTodos = (state: RootState) => state.todos.todos;
 
