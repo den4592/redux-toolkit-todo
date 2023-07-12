@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 
 type Todo = {
@@ -13,7 +12,7 @@ interface TodoState {
 }
 
 const initialState: TodoState = {
-  todos: [{ id: "1", text: "hello", completed: false }],
+  todos: [],
 };
 
 const todoSlice = createSlice({
@@ -21,8 +20,7 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo(state, action) {
-      // state.todos.push(action.payload)
-      console.log(state, action);
+      state.todos.push(action.payload);
     },
   },
 });
