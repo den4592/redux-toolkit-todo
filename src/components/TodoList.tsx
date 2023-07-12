@@ -11,7 +11,10 @@ const TodoList = () => {
       </h3>
       {todos &&
         todos.map((todo) => (
-          <div className="w-full h-[5rem] p-5 rounded bg-white flex items-center justify-between ">
+          <div
+            key={todo.id}
+            className="w-full h-[5rem] p-5 rounded bg-white flex items-center justify-between"
+          >
             <p className="text-base">{todo.text}</p>
             <div className="flex gap-5">
               <button className="shrink-0 p-2 border-2 border-yellow-400  rounded hover:text-white hover:bg-yellow-400">
