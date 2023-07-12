@@ -4,15 +4,16 @@ import { addTodo } from "../features/todos/todosSlice";
 const TodoForm = () => {
   const dispatch = useAppDispatch();
   return (
-    <div className="container xl-auto m-auto">
+    <div className="container ml-5 mr-5">
+      <h1 className="text-2xl mb-5 text-white font-bold">TODO APP</h1>
       <form className="flex justify-center">
         <input
           type="text"
           id="text"
-          placeholder="Todo..."
-          className="w-3/5 shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+          placeholder="type something..."
+          className="shadow appearance-none shadow appearance-none border-none rounded w-full py-2 px-3 mr-4 text-grey-darker"
         />
-        <button className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-indigo-400">
+        <button className="shrink-0 p-2 border-2 rounded hover:text-white hover:bg-pink-400 ">
           Add Todo
         </button>
       </form>
