@@ -11,6 +11,11 @@ interface TodoState {
   todos: Todo[];
 }
 
+interface EditTodo {
+  todoId: string;
+  todoText: string;
+}
+
 const initialState: TodoState = {
   todos: [],
 };
@@ -22,6 +27,14 @@ const todoSlice = createSlice({
     addTodo(state, action: PayloadAction<Todo>) {
       state.todos.push(action.payload);
     },
+    editTodo(state, action: PayloadAction<EditTodo>) {
+      const { todoId, todoText } = action.payload;
+      const findedTodo = state.todos.find((todo) => todo.id === todoId)!;
+      findedTodo.text = todoText;
+      if (findedTodo.completed) {
+        findedTodo.completed = !findedTodo.completed;
+      }
+    },
     completeTodo(state, action: PayloadAction<string>) {
       const todoId: string = action.payload;
       const findedTodo = state.todos.find((todo) => todo.id === todoId)!;
@@ -30,7 +43,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, completeTodo } = todoSlice.actions;
+export const { addTodo, editTodo, completeTodo } = todoSlice.actions;
 
 export const selectAllTodos = (state: RootState) => state.todos.todos;
 
