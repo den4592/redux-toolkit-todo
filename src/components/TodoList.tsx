@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { selectAllTodos } from "../features/todos/todosSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { completeTodo, editTodo } from "../features/todos/todosSlice";
+import {
+  completeTodo,
+  editTodo,
+  removeTodo,
+} from "../features/todos/todosSlice";
 
 const TodoList = () => {
   const todos = useSelector(selectAllTodos);
@@ -65,7 +69,10 @@ const TodoList = () => {
                 >
                   complete
                 </button>
-                <button className="shrink-0 p-2 border-2 border-red-400  rounded hover:text-white hover:bg-red-400">
+                <button
+                  className="shrink-0 p-2 border-2 border-red-400  rounded hover:text-white hover:bg-red-400"
+                  onClick={() => dispatch(removeTodo(todo.id))}
+                >
                   remove
                 </button>
               </div>
