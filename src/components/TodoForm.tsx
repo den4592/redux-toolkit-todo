@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { useAppDispatch } from "../app/hooks";
 import { addTodo } from "../features/todos/todosSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
