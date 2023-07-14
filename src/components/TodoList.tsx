@@ -1,8 +1,10 @@
 import { selectAllTodos } from "../features/todos/todosSlice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { editTodo } from "../features/todos/todosSlice";
 
 const TodoList = () => {
   const todos = useSelector(selectAllTodos);
+  const dispatch = useDispatch();
 
   return (
     <div className="container mt-10">
@@ -16,9 +18,18 @@ const TodoList = () => {
               key={todo.id}
               className="w-full h-[5rem] p-5 rounded bg-white flex items-center justify-between mb-5"
             >
-              <p className="text-base">{todo.text}</p>
+              <p
+                className={`text-base ${
+                  todo.completed === true ? "line-through" : ""
+                }`}
+              >
+                {todo.text}
+              </p>
               <div className="flex gap-5">
-                <button className="shrink-0 p-2 border-2 border-yellow-400  rounded hover:text-white hover:bg-yellow-400">
+                <button
+                  className="shrink-0 p-2 border-2 border-yellow-400  rounded hover:text-white hover:bg-yellow-400"
+                  onClick={() => dispatch(editTodo(todo.id))}
+                >
                   edit
                 </button>
                 <button className="shrink-0 p-2 border-2 border-green-400  rounded hover:text-white hover:bg-green-400">

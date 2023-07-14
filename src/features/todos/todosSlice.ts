@@ -22,10 +22,15 @@ const todoSlice = createSlice({
     addTodo(state, action) {
       state.todos.push(action.payload);
     },
+    editTodo(state, action) {
+      const todoId = action.payload;
+      const findedTodo = state.todos.find((todo) => todo.id === todoId);
+      findedTodo.completed = !findedTodo?.completed;
+    },
   },
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, editTodo } = todoSlice.actions;
 
 export const selectAllTodos = (state: RootState) => state.todos.todos;
 
