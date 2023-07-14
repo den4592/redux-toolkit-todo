@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 
 type Todo = {
@@ -19,12 +19,12 @@ const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addTodo(state, action) {
+    addTodo(state, action: PayloadAction<Todo>) {
       state.todos.push(action.payload);
     },
-    editTodo(state, action) {
-      const todoId = action.payload;
-      const findedTodo = state.todos.find((todo) => todo.id === todoId);
+    editTodo(state, action: PayloadAction<string>) {
+      const todoId: string = action.payload;
+      const findedTodo = state.todos.find((todo) => todo.id === todoId)!;
       findedTodo.completed = !findedTodo?.completed;
     },
   },
