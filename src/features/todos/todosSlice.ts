@@ -22,7 +22,7 @@ const todoSlice = createSlice({
     addTodo(state, action: PayloadAction<Todo>) {
       state.todos.push(action.payload);
     },
-    editTodo(state, action: PayloadAction<string>) {
+    completeTodo(state, action: PayloadAction<string>) {
       const todoId: string = action.payload;
       const findedTodo = state.todos.find((todo) => todo.id === todoId)!;
       findedTodo.completed = !findedTodo?.completed;
@@ -30,7 +30,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, editTodo } = todoSlice.actions;
+export const { addTodo, completeTodo } = todoSlice.actions;
 
 export const selectAllTodos = (state: RootState) => state.todos.todos;
 

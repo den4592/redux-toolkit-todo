@@ -1,6 +1,6 @@
 import { selectAllTodos } from "../features/todos/todosSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { editTodo } from "../features/todos/todosSlice";
+import { completeTodo } from "../features/todos/todosSlice";
 
 const TodoList = () => {
   const todos = useSelector(selectAllTodos);
@@ -26,13 +26,13 @@ const TodoList = () => {
                 {todo.text}
               </p>
               <div className="flex gap-5">
-                <button
-                  className="shrink-0 p-2 border-2 border-yellow-400  rounded hover:text-white hover:bg-yellow-400"
-                  onClick={() => dispatch(editTodo(todo.id))}
-                >
+                <button className="shrink-0 p-2 border-2 border-yellow-400  rounded hover:text-white hover:bg-yellow-400">
                   edit
                 </button>
-                <button className="shrink-0 p-2 border-2 border-green-400  rounded hover:text-white hover:bg-green-400">
+                <button
+                  className="shrink-0 p-2 border-2 border-green-400  rounded hover:text-white hover:bg-green-400"
+                  onClick={() => dispatch(completeTodo(todo.id))}
+                >
                   complete
                 </button>
                 <button className="shrink-0 p-2 border-2 border-red-400  rounded hover:text-white hover:bg-red-400">
